@@ -14,20 +14,16 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QLabel
-{
- background-color:rgb(50,20,60);
-color:white
-}</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>140</y>
-      <width>301</width>
-      <height>81</height>
+      <x>0</x>
+      <y>0</y>
+      <width>671</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="font">
@@ -36,11 +32,37 @@ color:white
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel
+{
+ background-color:rgb(53,20,68);
+color:white
+}</string>
+    </property>
     <property name="text">
-     <string>Welcome</string>
+     <string>                Welcome, Kareem</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignCenter</set>
+     <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>110</y>
+      <width>121</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>18</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Add User</string>
     </property>
    </widget>
   </widget>

@@ -19,6 +19,7 @@ void LoginPage::on_PushButtonLogin_clicked()
     AdminPage *adminpage = new AdminPage();
     this->hide();
     adminpage->show();
+
 }
 
 
@@ -30,4 +31,16 @@ void LoginPage::on_PushButtonCancel_clicked()
 
 }
 
+
+
+void LoginPage::on_lineEditUserName_textChanged(const QString &arg1)
+{
+
+}
+
+
+void LoginPage::on_lineEditPassword_textChanged(const QString &arg1)
+{
+
+}
 

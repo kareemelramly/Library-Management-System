@@ -24,6 +24,10 @@ private slots:
 
     void on_PushButtonLogin_clicked();
 
+    void on_lineEditUserName_textChanged(const QString &arg1);
+
+    void on_lineEditPassword_textChanged(const QString &arg1);
+
 private:
     Ui::LoginPage *ui;
 };
