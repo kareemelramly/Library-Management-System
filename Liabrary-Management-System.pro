@@ -18,6 +18,7 @@ HEADERS += \
     loginpage.h
 
 FORMS += \
+    AddUserDialog.ui \
     adminpage.ui \
     loginpage.ui
 
