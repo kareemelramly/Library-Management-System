@@ -11,18 +11,24 @@ CONFIG += c++17
 SOURCES += \
     adduserdialog.cpp \
     adminpage.cpp \
+    librariandashboard.cpp \
     main.cpp \
-    loginpage.cpp
+    loginpage.cpp \
+    memberdashboard.cpp
 
 HEADERS += \
     adduserdialog.h \
     adminpage.h \
-    loginpage.h
+    librariandashboard.h \
+    loginpage.h \
+    memberdashboard.h
 
 FORMS += \
     adduserdialog.ui \
     adminpage.ui \
-    loginpage.ui
+    librariandashboard.ui \
+    loginpage.ui \
+    memberdashboard.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
