@@ -20,3 +20,10 @@ void AddUserDialog::on_comboBox_currentIndexChanged(int index)
 
 }
 
+
+void AddUserDialog::on_pushButtonCancel_clicked()
+{
+    ui->lineEditUserName->clear();
+    ui->lineEditPassword->clear();
+}
+

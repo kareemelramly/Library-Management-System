@@ -22,6 +22,8 @@ private slots:
 
     void on_pushButtonListUsers_clicked();
 
+    void on_pushButtonLogOut_clicked();
+
 private:
     Ui::AdminPage *ui;
 };

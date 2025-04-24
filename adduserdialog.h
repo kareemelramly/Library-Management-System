@@ -18,6 +18,9 @@ public:
 private slots:
     void on_comboBox_currentIndexChanged(int index);
 
+
+    void on_pushButtonCancel_clicked();
+
 private:
     Ui::AddUserDialog *ui;
 };

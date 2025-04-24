@@ -24,13 +24,25 @@ void LoginPage::updatePushButtonLoginState() {
 void LoginPage::on_PushButtonLogin_clicked()
 {
 
-    AdminPage *adminpage = new AdminPage();
-    this->hide();
-    adminpage->show();
+    if (ui->lineEditPassword->text() == "111"){
+        AdminPage *adminpage = new AdminPage();
+        this->hide();
+        adminpage->show();
+    }
+    else if (ui->lineEditPassword->text() == "222"){
+
     LibrarianDashboard * librarianDashboard = new LibrarianDashboard();
+        this->hide();
     librarianDashboard->show();
+    }
+    else if (ui->lineEditPassword->text() == "333")
+    {
+        MemberDashboard * memberdashboard = new MemberDashboard();
+        this->hide();
+        memberdashboard->show();
+    }
 
-
+    // just to test that windows work propably after login
 }
 
 

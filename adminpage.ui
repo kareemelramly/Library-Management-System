@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>557</width>
-    <height>600</height>
+    <width>561</width>
+    <height>420</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -84,13 +84,26 @@ color:white
      <string>List Users</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButtonLogOut">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>340</y>
+      <width>80</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Log out</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>557</width>
+     <width>561</width>
      <height>19</height>
     </rect>
    </property>
