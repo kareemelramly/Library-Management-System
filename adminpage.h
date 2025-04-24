@@ -16,7 +16,11 @@ public:
     ~AdminPage();
 
 private slots:
-    void on_pushButton_clicked();
+
+
+    void on_pushButtonAddUser_clicked();
+
+    void on_pushButtonListUsers_clicked();
 
 private:
     Ui::AdminPage *ui;

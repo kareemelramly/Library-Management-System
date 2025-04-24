@@ -13,9 +13,17 @@ AdminPage::~AdminPage()
     delete ui;
 }
 
-void AdminPage::on_pushButton_clicked()
+
+
+void AdminPage::on_pushButtonAddUser_clicked()
 {
     AddUserDialog *adduserdialog = new AddUserDialog();
     adduserdialog->exec();
+}
+
+
+void AdminPage::on_pushButtonListUsers_clicked()
+{
+
 }
 

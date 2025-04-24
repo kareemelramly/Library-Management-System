@@ -15,6 +15,11 @@ public:
     explicit LibrarianDashboard(QWidget *parent = nullptr);
     ~LibrarianDashboard();
 
+
+
+private slots:
+    void on_pushButtonLogOut_clicked();
+
 private:
     Ui::LibrarianDashboard *ui;
 };

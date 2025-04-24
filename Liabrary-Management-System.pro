@@ -12,6 +12,7 @@ SOURCES += \
     adduserdialog.cpp \
     adminpage.cpp \
     librariandashboard.cpp \
+    listusers.cpp \
     main.cpp \
     loginpage.cpp \
     memberdashboard.cpp
@@ -20,6 +21,7 @@ HEADERS += \
     adduserdialog.h \
     adminpage.h \
     librariandashboard.h \
+    listusers.h \
     loginpage.h \
     memberdashboard.h
 
@@ -27,6 +29,7 @@ FORMS += \
     adduserdialog.ui \
     adminpage.ui \
     librariandashboard.ui \
+    listusers.ui \
     loginpage.ui \
     memberdashboard.ui
 
