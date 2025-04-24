@@ -7,15 +7,22 @@ LoginPage::LoginPage(QWidget *parent)
     , ui(new Ui::LoginPage)
 {
     ui->setupUi(this);
+    ui->PushButtonLogin->setEnabled(false);
+    connect(ui->lineEditUserName, &QLineEdit::textChanged, this, &LoginPage::updatePushButtonLoginState);
+    connect(ui->lineEditPassword, &QLineEdit::textChanged, this, &LoginPage::updatePushButtonLoginState);
 }
 
 LoginPage::~LoginPage()
 {
     delete ui;
 }
-
+void LoginPage::updatePushButtonLoginState() {
+    bool enable = !ui->lineEditUserName->text().isEmpty() && !ui->lineEditPassword->text().isEmpty();
+    ui->PushButtonLogin->setEnabled(enable);
+}
 void LoginPage::on_PushButtonLogin_clicked()
 {
+
     AdminPage *adminpage = new AdminPage();
     this->hide();
     adminpage->show();
