@@ -13,93 +13,177 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QGroupBox" name="groupBox">
+  <property name="styleSheet">
+   <string notr="true">
+QDialog{
+    background-image: url(&quot;:/Images/ylswjsy7stw-2048x1201.jpg&quot;);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+</string>
+  </property>
+  <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>0</y>
-     <width>491</width>
-     <height>571</height>
+     <x>30</x>
+     <y>-70</y>
+     <width>711</width>
+     <height>631</height>
     </rect>
    </property>
-   <property name="title">
-    <string>GroupBox</string>
+   <property name="styleSheet">
+    <string notr="true">QFrame{
+background:transparent;
+}
+
+
+
+QLabel {
+    font-family: &quot;Segoe UI&quot;;       /* Or any font you like */
+    font-size: 16px;               /* Adjust size as needed */
+    font-weight: bold;             /* This makes it bold */
+    color: white;                  /* Optional: sets text color */
+}
+QLineEdit {
+    color: #FFFFFF;  /* White text color */
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    padding: 2px;
+    font-weight: bold;
+}
+
+QLineEdit:focus {
+    border-bottom: 2px solid #FFD700; /* gold underline when focused */
+}
+
+
+
+
+</string>
    </property>
-   <widget class="QPushButton" name="borrow_book_button">
+   <property name="frameShape">
+    <enum>QFrame::Shape::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Shadow::Raised</enum>
+   </property>
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>510</y>
-      <width>93</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Borrow Book</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>30</y>
+      <x>590</x>
+      <y>320</y>
       <width>131</width>
-      <height>41</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>List of Books</string>
+     <string>Total Fines</string>
     </property>
    </widget>
-   <widget class="QListView" name="user_list">
+   <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>70</y>
-      <width>441</width>
-      <height>431</height>
+      <width>491</width>
+      <height>571</height>
      </rect>
     </property>
+    <property name="title">
+     <string>GroupBox</string>
+    </property>
+    <widget class="QPushButton" name="borrow_book_button">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>510</y>
+       <width>93</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Borrow Book</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>131</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>List of Books</string>
+     </property>
+    </widget>
+    <widget class="QListView" name="user_list">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>70</y>
+       <width>441</width>
+       <height>431</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QListView{
+background:rgba(255, 255,255, .8);
+}</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="return_book_button">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>510</y>
+       <width>93</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Return Book</string>
+     </property>
+    </widget>
    </widget>
-   <widget class="QPushButton" name="return_book_button">
+   <widget class="QLabel" name="fines_money">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>510</y>
-      <width>93</width>
-      <height>29</height>
+      <x>620</x>
+      <y>360</y>
+      <width>31</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Return Book</string>
+     <string>0</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>610</x>
-     <y>200</y>
-     <width>81</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Total Fines</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="fines_money">
-   <property name="geometry">
-    <rect>
-     <x>640</x>
-     <y>240</y>
-     <width>31</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>0</string>
-   </property>
+   <widget class="QLabel" name="labelback">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>300</y>
+      <width>131</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background:rgba(0,0,0,200);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>labelback</zorder>
+   <zorder>label</zorder>
+   <zorder>groupBox</zorder>
+   <zorder>fines_money</zorder>
   </widget>
  </widget>
  <resources/>
