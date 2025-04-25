@@ -13,18 +13,45 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QLabel {
+    font-family: &quot;Segoe UI&quot;;       /* Or any font you like */
+    font-size: 16px;               /* Adjust size as needed */
+    font-weight: bold;             /* This makes it bold */
+    color: white;                  /* Optional: sets text color */
+}
+QLineEdit {
+    color: #FFFFFF;  /* White text color */
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    padding: 2px;
+    font-weight: bold;
+}
+
+QLineEdit:focus {
+    border-bottom: 2px solid #FFD700; /* gold underline when focused */
+}
+
+
+
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label_login_page">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>320</x>
       <y>190</y>
-      <width>81</width>
-      <height>16</height>
+      <width>121</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
      <string>User Login</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLineEdit" name="Username_login">
@@ -121,6 +148,59 @@
      <string>Cancel</string>
     </property>
    </widget>
+   <widget class="QLabel" name="labelBackground">
+    <property name="geometry">
+     <rect>
+      <x>-60</x>
+      <y>-70</y>
+      <width>881</width>
+      <height>631</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">Image:url(:/Images/ylswjsy7stw-2048x1201.jpg)</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Plain</enum>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBehindText">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>90</y>
+      <width>341</width>
+      <height>391</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    background-color: rgba(0, 0, 0, 180); /* #B2724B with 50% opacity */
+    color: white;
+    border: none;
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>labelBackground</zorder>
+   <zorder>labelBehindText</zorder>
+   <zorder>Cancel_push_button</zorder>
+   <zorder>Login_push_button</zorder>
+   <zorder>Password_label</zorder>
+   <zorder>Password_login</zorder>
+   <zorder>Username_label</zorder>
+   <zorder>Username_login</zorder>
+   <zorder>label_login_page</zorder>
+   <zorder>label_4</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
