@@ -6,6 +6,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+
 }
 
 MainWindow::~MainWindow()
@@ -13,9 +15,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_Cancel_push_button_clicked()
+void MainWindow::on_Clear_push_button_clicked()
 {
     ui->Password_login->clear();
     ui->Username_login->clear();
 }
+
 

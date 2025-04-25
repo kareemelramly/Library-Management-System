@@ -18,7 +18,8 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_Cancel_push_button_clicked();
+    void on_Clear_push_button_clicked();
+
 
 private:
     Ui::MainWindow *ui;
