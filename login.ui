@@ -36,6 +36,9 @@
       <height>26</height>
      </rect>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QLineEdit" name="Password_login">
     <property name="geometry">
@@ -48,6 +51,9 @@
     </property>
     <property name="echoMode">
      <enum>QLineEdit::EchoMode::Password</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="Username_label">
@@ -79,7 +85,7 @@
    <widget class="QPushButton" name="Login_push_button">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>280</x>
       <y>430</y>
       <width>93</width>
       <height>29</height>
@@ -102,6 +108,19 @@
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="Cancel_push_button">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>430</y>
+      <width>93</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Cancel</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -109,7 +128,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
