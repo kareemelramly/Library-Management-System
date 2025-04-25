@@ -15,10 +15,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_Clear_push_button_clicked()
-{
-    ui->Password_login->clear();
-    ui->Username_login->clear();
-}
+
 
 
