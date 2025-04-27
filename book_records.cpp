@@ -5,6 +5,7 @@ book_records::book_records(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::book_records)
 {
+    ui->label_5->setStyleSheet("{color:#COBBFE}");
     ui->setupUi(this);
 }
 

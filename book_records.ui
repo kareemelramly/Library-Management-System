@@ -32,8 +32,11 @@ QDialog{
      <height>571</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">#groupbox{color:white;}</string>
+   </property>
    <property name="title">
-    <string>GroupBox</string>
+    <string/>
    </property>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
@@ -43,6 +46,9 @@ QDialog{
       <width>131</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#label_5{color:white}</string>
     </property>
     <property name="text">
      <string>List of Books</string>
