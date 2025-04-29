@@ -43,10 +43,9 @@ bool MainWindow::validateCredentials(const QString& username, const QString& pas
 
 void MainWindow::on_loginButton_clicked()
 {
-    QLineEdit* usernameEdit = findChild<QLineEdit*>("usernameEdit");
-    QLineEdit* passwordEdit = findChild<QLineEdit*>("passwordEdit");
-    QString username = usernameEdit->text();
-    QString password = passwordEdit->text();
+    
+    QString username = ui->usernameEdit->text();
+    QString password = ui->passwordEdit->text();
 
     if (username.isEmpty() || password.isEmpty()) {
         QMessageBox::warning(this, "Login Error", "Username and password cannot be empty.");
@@ -54,16 +53,10 @@ void MainWindow::on_loginButton_clicked()
     }
     QMap<QString, library_member*> users = Utils::loadUsersFromFile("users.csv");
 
-    // Check if user exists and password matches
     if (users.contains(username) && users[username]->getPassword() == password) {
-        // Check the role of the user
         QString role = users[username]->getRole();
-
-        // Clean up memory before proceeding
-        qDeleteAll(users.values());
         users.clear();
 
-        // Handle user based on role
         if (role == "admin") {
             QMessageBox::information(this, "Login", "Admin login successful!");
             if (!admindashbord) {
