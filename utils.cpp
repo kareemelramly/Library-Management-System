@@ -18,7 +18,6 @@ QMap<QString, library_member*> Utils::loadUsersFromFile(const QString& filePath)
 
     // Try to open the file after possibly creating it
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "Could not open file for reading: " << filePath;
         return users;
     }
 
@@ -45,11 +44,10 @@ QMap<QString, library_member*> Utils::loadUsersFromFile(const QString& filePath)
     return users;
 }
 
-// Keep the original method for backward compatibility
 void Utils::saveUsersToFile(const QString& filePath, const QMap<QString, library_member*>& users) {
     QFile file(filePath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        qDebug() << "Could not open file for writing: " << filePath;
+        qDebug() << "Could not open file!" << filePath;
         return;
     }
     QTextStream out(&file);
@@ -84,9 +82,9 @@ bool Utils::isUsernameAvailable(const QString& filePath, const QString& username
         QStringList parts = line.split(",");
         if (parts.size() == 3 && parts[0] == username) {
             file.close();
-            return false;  // Username already exists
+            return false;  
         }
     }
     file.close();
-    return true;  // Username is available
+    return true;  
 }
