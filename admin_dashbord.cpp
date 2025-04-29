@@ -1,6 +1,6 @@
 #include "admin_dashbord.h"
 #include "ui_admin_dashbord.h"
-#include "library_member.h"  // Ensure you have the correct path for the library_member class
+#include "library_member.h" 
 #include "utils.h"
 #include <QMessageBox>
 #include <QFile>
@@ -15,8 +15,6 @@ Admin_Dashbord::Admin_Dashbord(QWidget *parent)
 {
     ui->setupUi(this);
     ui->passwordEdit->setEchoMode(QLineEdit::Password);
-
-    // Change the window title to reflect the new purpose
     setWindowTitle("Admin Page - User Management");
 }
 
@@ -40,7 +38,6 @@ void Admin_Dashbord::on_signupButton_clicked()
         return;
     }
 
-    // Validate input
     if (username.isEmpty()) {
         QMessageBox::warning(this, "Invalid Input", "Username cannot be empty.");
         return;
@@ -56,7 +53,6 @@ void Admin_Dashbord::on_signupButton_clicked()
         return;
     }
 
-    // Append new user to file
     QFile file("users.csv");
     if (file.open(QIODevice::Append | QIODevice::Text)) {
         QTextStream out(&file);
@@ -65,11 +61,9 @@ void Admin_Dashbord::on_signupButton_clicked()
 
         QMessageBox::information(this, "User Registration", "User registered successfully.");
 
-        // Clear input fields
         ui->usernameEdit->clear();
         ui->passwordEdit->clear();
 
-        // Refresh the user list to reflect the new user
         refreshUserList();
     } else {
         QMessageBox::critical(this, "File Error", "Could not open file for writing.");
@@ -78,52 +72,32 @@ void Admin_Dashbord::on_signupButton_clicked()
 
 void Admin_Dashbord::refreshUserList()
 {
-    // Find the QTableWidget named "usersTable" in the UI
-    QTableWidget* usersTable = findChild<QTableWidget*>("usersTable");
-    if (!usersTable) {
-        qDebug() << "User table widget not found in UI";
-        return;
-    }
-
-    // Clear existing rows
-    usersTable->setRowCount(0);
-
-    // Set up columns if not already done
-    if (usersTable->columnCount() < 2) {
-        usersTable->setColumnCount(2);
+    ui->usersTable->setRowCount(0);
+    
+    if (ui->usersTable->columnCount() < 2) {
+        ui->usersTable->setColumnCount(2);
         QStringList headers;
         headers << "Username" << "Role";
-        usersTable->setHorizontalHeaderLabels(headers);
+        ui->usersTable->setHorizontalHeaderLabels(headers);
     }
 
-    // Load all users from the file
     QMap<QString, library_member*> users = Utils::loadUsersFromFile("users.csv");
 
-    // Debug output to check loaded users
-    qDebug() << "Loaded users:" << users.keys();
-
-    // Add each user to the table
     int row = 0;
     for (auto it = users.begin(); it != users.end(); ++it) {
         QString username = it.key();
         QString role = it.value()->getRole();
 
-        // Debug output for each user added
-        qDebug() << "Adding user:" << username << "with role:" << role;
-
-        usersTable->insertRow(row);
-        usersTable->setItem(row, 0, new QTableWidgetItem(username));
-        usersTable->setItem(row, 1, new QTableWidgetItem(role));
-
-        // Color code by role
+        ui->usersTable->insertRow(row);
+        ui->usersTable->setItem(row, 0, new QTableWidgetItem(username));
+        ui->usersTable->setItem(row, 1, new QTableWidgetItem(role));
         QColor rowColor;
         if (role == "admin") {
-            rowColor = QColor(255, 230, 230); // Light red
+            rowColor = QColor(255, 230, 230); 
         } else if (role == "librarian") {
-            rowColor = QColor(230, 230, 255); // Light blue
+            rowColor = QColor(230, 230, 255); 
         }
 
-        // Apply color to the row if valid
         if (rowColor.isValid()) {
             for (int col = 0; col < usersTable->columnCount(); col++) {
                 usersTable->item(row, col)->setBackground(rowColor);
@@ -132,11 +106,7 @@ void Admin_Dashbord::refreshUserList()
 
         row++;
     }
+    ui->usersTable->resizeColumnsToContents();
 
-    // Resize columns to fit the content
-    usersTable->resizeColumnsToContents();
-
-    // Clean up memory used by user data
-    qDeleteAll(users.values());
     users.clear();
 }
