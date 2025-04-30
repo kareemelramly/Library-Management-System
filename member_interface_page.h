@@ -12,7 +12,7 @@ class User_Interface_Page : public QDialog
     Q_OBJECT
 
 public:
-    explicit User_Interface_Page(QWidget *parent = nullptr);
+    explicit User_Interface_Page(QString name, QWidget *parent = nullptr);
     ~User_Interface_Page();
 
 private:

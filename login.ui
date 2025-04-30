@@ -95,7 +95,7 @@ QLineEdit:focus {
       <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLineEdit" name="Username_login">
+    <widget class="QLineEdit" name="usernameEdit">
      <property name="geometry">
       <rect>
        <x>40</x>
@@ -134,7 +134,7 @@ QLineEdit:focus {
       <string>Password</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="Password_login">
+    <widget class="QLineEdit" name="passwordEdit">
      <property name="geometry">
       <rect>
        <x>40</x>
@@ -180,7 +180,7 @@ QLineEdit:focus {
       <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QPushButton" name="Login_push_button">
+    <widget class="QPushButton" name="loginButton">
      <property name="geometry">
       <rect>
        <x>130</x>
@@ -195,11 +195,11 @@ QLineEdit:focus {
     </widget>
     <zorder>labelBehindText</zorder>
     <zorder>label_login_page</zorder>
-    <zorder>Username_login</zorder>
+    <zorder>usernameEdit</zorder>
     <zorder>Username_label</zorder>
     <zorder>Password_label</zorder>
-    <zorder>Password_login</zorder>
-    <zorder>Login_push_button</zorder>
+    <zorder>passwordEdit</zorder>
+    <zorder>loginButton</zorder>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -208,7 +208,7 @@ QLineEdit:focus {
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>20</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
