@@ -12,7 +12,7 @@ User_Interface_Page::User_Interface_Page(QString username, QWidget *parent)
     user = dynamic_cast<member*>(userInput);
     ui->number_of_books->setText(""+QString::number(Utils::getTotalNumberOfBooks("books.csv")));
     ui->number_of_borrowed->setText(""+QString::number(user->borrowed_books.size()));
-    ui->number_of_overdue->setText(""+QString::number(user->getOverdueBooks(20251020)));
+    ui->number_of_overdue->setText(""+QString::number(user->getOverdueBooks()));
 }
 
 User_Interface_Page::~User_Interface_Page()

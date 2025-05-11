@@ -36,9 +36,9 @@ QMap<QString, library_member*> Utils::loadUsersFromFile(const QString& filePath)
                 users[username] = new Librarian(username, password);
             } else if (role == "member") {
                 int Fines= parts[3].toInt()*20; //20 is a value
-                QMap<int,int>books;
+                QMap<int,QString>books;
                 for(int i=4;i<parts.size();i+=2){
-                    books[parts[i].toInt()]=parts[i+1].toInt();
+                    books[parts[i].toInt()]=parts[i+1];
                 }
                 users[username] = new member(username, password,books,Fines);
             }
@@ -66,6 +66,7 @@ QList<book*> Utils::loadBooksFromFile(const QString& filePath) {
     while (!in.atEnd()) {
         QString line = in.readLine();
         QStringList parts = line.split(",");
+        qDebug()<<parts.size()<<"\n";
         if (parts.size() >= 6) {
             QString bookID = parts[0];
             QString title = parts[1];
@@ -75,11 +76,10 @@ QList<book*> Utils::loadBooksFromFile(const QString& filePath) {
             int availability = parts[5].toInt();
             // Add the book
             books.push_back(new book(bookID,title,author,category,number_of_copies,availability));
-
     }
+}
     file.close();
     return books;
-}
 }
 void Utils::saveUsersToFile(const QString& filePath, const QMap<QString, library_member*>& users) {
     QFile file(filePath);
@@ -93,12 +93,12 @@ void Utils::saveUsersToFile(const QString& filePath, const QMap<QString, library
         out << user->getUsername() << "," << user->getPassword() << "," << user->getRole();
         if(user->getRole()=="member"){
             member* userMember= dynamic_cast<member*>(user);
-            out<<userMember->TotalFine;
+            out<<","<<userMember->TotalFine;
             for(auto item=userMember->borrowed_books.begin();item!=userMember->borrowed_books.end();item++){
                 out<<","<<item.key()<<","<<item.value();
             }
-            out<<"\n";
         }
+        out<<"\n";
     }
     file.close();
 }
@@ -111,7 +111,7 @@ void Utils::saveBookstoFile(const QString& filePath,const QList<book*>& books) {
     QTextStream out(&file);
     QList<book*>::const_iterator it = books.begin();
     for (it = books.begin(); it != books.end(); ++it) {
-        out<<(*it)->ID<<","<<(*it)->Title<<","<<(*it)->author<<","<<(*it)->Category<<","<<(*it)->totalCopies<<(*it)->availableCopies<<"\n";
+        out<<(*it)->ID<<","<<(*it)->Title<<","<<(*it)->author<<","<<(*it)->Category<<","<<(*it)->totalCopies<<","<<(*it)->availableCopies<<"\n";
     }
     file.close();
 }

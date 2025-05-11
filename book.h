@@ -15,6 +15,10 @@ class book
     int timesBorrowed;
     book(QString id, QString title, QString auth, QString categ, int number_of_copies, int available);
     void borrow();
+    void returning(){
+        availableCopies++;
+        timesBorrowed--;
+    }
 };
 
 #endif // BOOK_H

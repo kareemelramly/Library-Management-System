@@ -15,6 +15,11 @@ public:
     explicit borrow_return_book(member* currentUser,QWidget *parent = nullptr);
     ~borrow_return_book();
     void refreshBooksList();
+    void refreshBooksBorrowedList();
+private slots:
+    void on_borrow_book_button_clicked();
+
+    void on_return_book_button_clicked();
 
 private:
     Ui::borrow_return_book *ui;
