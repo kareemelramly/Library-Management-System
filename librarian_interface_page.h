@@ -12,7 +12,7 @@ class librarian_interface_page : public QDialog
     Q_OBJECT
 
 public:
-    explicit librarian_interface_page(QWidget *parent = nullptr);
+    explicit librarian_interface_page(QString name, QWidget *parent = nullptr);
     ~librarian_interface_page();
 
 private:
@@ -20,3 +20,7 @@ private:
 };
 
 #endif // LIBRARIAN_INTERFACE_PAGE_H
+
+
+
+

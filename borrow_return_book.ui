@@ -120,7 +120,7 @@ QLineEdit:focus {
       <string>List of Books</string>
      </property>
     </widget>
-    <widget class="QListView" name="user_list">
+    <widget class="QListView" name="book_list">
      <property name="geometry">
       <rect>
        <x>20</x>

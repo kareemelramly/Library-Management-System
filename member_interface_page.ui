@@ -71,7 +71,7 @@ QLineEdit:focus {
    <property name="frameShadow">
     <enum>QFrame::Shadow::Raised</enum>
    </property>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="number_of_overdue">
     <property name="geometry">
      <rect>
       <x>240</x>
@@ -120,7 +120,7 @@ QLineEdit:focus {
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>180</x>
       <y>370</y>
       <width>341</width>
       <height>61</height>
@@ -231,7 +231,7 @@ QLineEdit:focus {
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>180</x>
       <y>240</y>
       <width>341</width>
       <height>61</height>
@@ -251,7 +251,7 @@ QLineEdit:focus {
      <string>Borrowed Books</string>
     </property>
    </widget>
-   <widget class="QLabel" name="labelback">
+   <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -288,8 +288,8 @@ background:rgba(98, 60, 59, .50);
     </property>
    </widget>
    <zorder>welcomeback</zorder>
-   <zorder>labelback</zorder>
-   <zorder>label_4</zorder>
+   <zorder>label_2</zorder>
+   <zorder>number_of_overdue</zorder>
    <zorder>number_of_borrowed</zorder>
    <zorder>label_3</zorder>
    <zorder>welcome_label</zorder>

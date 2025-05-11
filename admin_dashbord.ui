@@ -86,13 +86,13 @@ border:none;
       <string>List of Users</string>
      </property>
     </widget>
-    <widget class="QListView" name="user_list">
+    <widget class="QTableWidget" name="usersTable">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>70</y>
-       <width>301</width>
-       <height>431</height>
+       <x>10</x>
+       <y>90</y>
+       <width>331</width>
+       <height>381</height>
       </rect>
      </property>
     </widget>
@@ -174,7 +174,7 @@ QLineEdit:focus {
       <string>New User</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="new_user_password">
+    <widget class="QLineEdit" name="passwordEdit">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -183,8 +183,11 @@ QLineEdit:focus {
        <height>26</height>
       </rect>
      </property>
+     <property name="echoMode">
+      <enum>QLineEdit::EchoMode::Password</enum>
+     </property>
     </widget>
-    <widget class="QLineEdit" name="new_user_name">
+    <widget class="QLineEdit" name="usernameEdit">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -207,7 +210,7 @@ QLineEdit:focus {
       <string>Name</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="add_user_button">
+    <widget class="QPushButton" name="signupButton">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -220,7 +223,7 @@ QLineEdit:focus {
       <string>Add</string>
      </property>
     </widget>
-    <widget class="QGroupBox" name="role_group">
+    <widget class="QGroupBox" name="groupBox2">
      <property name="geometry">
       <rect>
        <x>40</x>
@@ -232,7 +235,7 @@ QLineEdit:focus {
      <property name="title">
       <string>GroupBox</string>
      </property>
-     <widget class="QRadioButton" name="librarian_choice">
+     <widget class="QRadioButton" name="librarianRadioButton">
       <property name="geometry">
        <rect>
         <x>110</x>
@@ -245,7 +248,7 @@ QLineEdit:focus {
        <string>Librarian</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="member_choice">
+     <widget class="QRadioButton" name="memberRadioButton">
       <property name="geometry">
        <rect>
         <x>0</x>

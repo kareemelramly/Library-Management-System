@@ -9,21 +9,33 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    admin.cpp \
     admin_dashbord.cpp \
+    book.cpp \
     book_records.cpp \
     borrow_return_book.cpp \
+    librarian.cpp \
     librarian_interface_page.cpp \
+    library_member.cpp \
     login.cpp \
     main.cpp \
-    member_interface_page.cpp
+    member.cpp \
+    member_interface_page.cpp \
+    utils.cpp
 
 HEADERS += \
+    admin.h \
     admin_dashbord.h \
+    book.h \
     book_records.h \
     borrow_return_book.h \
+    librarian.h \
     librarian_interface_page.h \
+    library_member.h \
     login.h \
-    member_interface_page.h
+    member.h \
+    member_interface_page.h \
+    utils.h
 
 FORMS += \
     add_edit_book.ui \
