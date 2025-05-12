@@ -57,7 +57,7 @@ void borrow_return_book::refreshBooksList()
 {
     QStringList list;
     for(auto item: books){
-        if(!(user->isBookBorrowed(item->ID.toInt()))){
+        if(!(user->isBookBorrowed(item->ID.toInt())) && (item->timesBorrowed<=0)){
             list<<item->Title;
         }
     }

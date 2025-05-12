@@ -49,7 +49,7 @@ librarian_interface_page::~librarian_interface_page()
 
 void librarian_interface_page::on_book_records_button_clicked()
 {
-    booksPage = new book_records(user,users,books,this);
+    booksPage = new book_records(user,users,books,darkMode,this);
     this->hide();
     booksPage->show();
 }
