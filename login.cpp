@@ -23,9 +23,16 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::openAdminDashbord()
 {
     qDebug() << "Open admin page called";
-    if (!admindashbord)
-        admindashbord = new Admin_Dashbord(this,users);
-    admindashbord->show();
+    if(ui->radioButton->isChecked()){
+        if (!admindashbord)
+            admindashbord = new Admin_Dashbord(this,users,true);
+        admindashbord->show();
+    }else{
+        if (!admindashbord)
+            admindashbord = new Admin_Dashbord(this,users,false);
+        admindashbord->show();
+    }
+
 }
 
 MainWindow::~MainWindow()
@@ -61,14 +68,22 @@ void MainWindow::on_loginButton_clicked()
         if (role == "admin") {
             QMessageBox::information(this, "Login", "Admin login successful!");
             if (!admindashbord) {
-                admindashbord = new Admin_Dashbord(this,users);
+                if(ui->radioButton->isChecked()){
+                admindashbord = new Admin_Dashbord(this,users,true);
+                }else{
+                admindashbord = new Admin_Dashbord(this,users,false);
+                }
             }
             this -> hide();
             admindashbord->show();
         } else if (role == "librarian") {
             QMessageBox::information(this, "Login", "Librarian login successful!");
             if (!librarianPage) {
-                librarianPage = new librarian_interface_page(username,users,books,this);
+                if(ui->radioButton->isChecked()){
+                librarianPage = new librarian_interface_page(username,users,books,true,this);
+                }else{
+                librarianPage = new librarian_interface_page(username,users,books,false,this);
+                }
             }
             this -> hide();
             librarianPage->show();
@@ -76,7 +91,10 @@ void MainWindow::on_loginButton_clicked()
             QMessageBox::information(this, "Login", "Member login successful!");
             if (!userPage) {
                 qDebug()<<"start\n";
-                userPage = new User_Interface_Page(username,users,books,this);
+                if(ui->radioButton->isChecked())
+                userPage = new User_Interface_Page(username,users,books,true,this);
+                else
+                userPage = new User_Interface_Page(username,users,books,false,this);
             }
             this -> hide();
             userPage->show();

@@ -4,12 +4,13 @@
 #include "add_edit_book.h"
 #include<QMessageBox>
 #include"utils.h"
-book_records::book_records(Librarian* userIn,const QMap<QString, library_member*>& usersIn,const QList<book*>& booksIn,QWidget *parent)
+book_records::book_records(Librarian* userIn,const QMap<QString, library_member*>& usersIn,const QList<book*>& booksIn,bool darkmode,QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::book_records),user(userIn),users(usersIn),books(booksIn)
 {
     ui->setupUi(this);
     refreshBooksList();
+    this->darkMode = darkmode;
     QStringList list;
     list<<"All"<<"Title"<<"Author"<<"Category";
     QStringListModel* model;
@@ -17,6 +18,33 @@ book_records::book_records(Librarian* userIn,const QMap<QString, library_member*
     model->setStringList(list);
     ui->functionality->setModel(model);
     refreshComboBox();
+    if (!darkMode) {
+        // Light mode
+        qApp->setStyleSheet(""); // Reset to default
+    } else {
+        // Dark mode stylesheet
+        QString darkStyle = R"(
+            QWidget {
+                background-color: #121212;
+                color: #ffffff;
+            }
+            QPushButton {
+                background-color: #2c2c2c;
+                border: 1px solid #444;
+                padding: 5px;
+            }
+            QPushButton:hover {
+                background-color: #3d3d3d;
+            }
+            QLabel{
+                color:white;
+            }
+            QTableWidget{
+                color:black;
+            }
+        )";
+        qApp->setStyleSheet(darkStyle);
+    }
     this->setAttribute(Qt::WA_DeleteOnClose);
 }
 
@@ -226,7 +254,7 @@ void book_records::refreshBooksListByCategory(QString name){
 
 void book_records::on_add_book_button_clicked()
 {
-    addBookPage = new add_edit_book(this,user,users,books);
+    addBookPage = new add_edit_book(this,user,users,books,darkMode);
     addBookPage->show();
 }
 void book_records::refreshComboBox(){
@@ -254,7 +282,7 @@ void book_records::on_edit_book_button_clicked()
     QString Title = currentBook->Title;
     QString Category = currentBook->Category;
     QString Author = currentBook->author;
-    addBookPage = new add_edit_book(this,user,users,books,false,ID,Title,Author,Category);
+    addBookPage = new add_edit_book(this,user,users,books,darkMode,false,ID,Title,Author,Category);
     addBookPage->show();
 }
 

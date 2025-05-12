@@ -23,6 +23,7 @@ SOURCES += \
     main.cpp \
     member.cpp \
     member_interface_page.cpp \
+    report_paper.cpp \
     utils.cpp
 
 HEADERS += \
@@ -39,6 +40,7 @@ HEADERS += \
     login.h \
     member.h \
     member_interface_page.h \
+    report_paper.h \
     utils.h
 
 FORMS += \
@@ -48,7 +50,8 @@ FORMS += \
     borrow_return_book.ui \
     librarian_interface_page.ui \
     login.ui \
-    member_interface_page.ui
+    member_interface_page.ui \
+    report_paper.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
