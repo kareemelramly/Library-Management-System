@@ -2,7 +2,7 @@
 #include "build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/ui_admin_dashbord.h"
 #include "ui_admin_dashbord.h"
 #include "library_member.h"
-
+#include "utils.h"
 #include <QMessageBox>
 #include <QFile>
 #include <QTextStream>
@@ -19,6 +19,7 @@ Admin_Dashbord::Admin_Dashbord(library_system* system, QWidget *parent)
     ui->passwordEdit->setEchoMode(QLineEdit::Password);
     setWindowTitle("Admin Page - User Management");
     refreshUserList();
+    this->setAttribute(Qt::WA_DeleteOnClose);
 }
 
 Admin_Dashbord::~Admin_Dashbord()
@@ -53,7 +54,7 @@ void Admin_Dashbord::on_signupButton_clicked()
         return;
     }
 
-    if (!Utils::isUsernameAvailable("users.csv", username)) {
+    if (!Utils::isUsernameAvailable(librarySystem->userFilePath(), username)) {
         QMessageBox::warning(this, "Username Taken", "This username is already in use. Please choose another.");
         return;
     }
@@ -92,7 +93,7 @@ void Admin_Dashbord::refreshUserList()
 
 
     int row = 0;
-    for (auto it = librarySystem->Users().begin(); it != librarySystem->Users().end(); ++it) {
+    for (auto  it = librarySystem->Users().begin(); it != librarySystem->Users().end(); ++it) {
         QString username = it.key();
         QString role = it.value()->getRole();
 
@@ -121,15 +122,14 @@ void Admin_Dashbord::refreshUserList()
 void Admin_Dashbord::on_delete_user_button_clicked()
 {
     auto items = ui->usersTable->selectedItems();
-    for(auto item: items){
+    for(auto item: std::as_const(items)){
         QString name = item->text();
         if(librarySystem->Users().contains(name)){
             auto it = librarySystem->Users().find(name);
             librarySystem->Users().erase(it);
         }
     }
-    librarySystem->saveUsers();
     refreshUserList();
-
 }
+
 

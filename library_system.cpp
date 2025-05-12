@@ -2,30 +2,41 @@
 #include "utils.h"
 
 library_system::library_system() {
-    Utils::createDefaultAdmin("users.csv");
-    Utils::createDefaultBook("books.csv");
+    userPath = "users.csv";
+    bookPath = "books.csv";
 
-    users = *new QMap<QString, library_member*>(Utils::loadUsersFromFile("users.csv"));
-    books = *new QList<book*>(Utils::loadBooksFromFile("books.csv"));
+    Utils::createDefaultAdmin(userPath);
+    Utils::createDefaultBook(bookPath);
+
+    users = *new QMap<QString, library_member*>(Utils::loadUsersFromFile(userPath));
+    books = *new QList<book*>(Utils::loadBooksFromFile(bookPath));
 }
 
 
- QList<book*> library_system::Books(){
+QList<book *> &library_system::Books(){
     return books;
 }
 
- QMap<QString, library_member *> library_system::Users()
+QMap<QString, library_member *> &library_system::Users()
 {
     return users;
 }
+QString library_system::bookFilePath()
+{
+    return bookPath;
+}
+QString library_system::userFilePath()
+{
+    return userPath;
+}
 void library_system::saveBooks(){
-    Utils::saveBookstoFile("books.csv", books);
+    Utils::saveBookstoFile(bookPath, books);
 
 }
 
 void library_system::saveUsers()
 {
-    Utils::saveUsersToFile("users.csv", users);
+    Utils::saveUsersToFile(userPath, users);
 }
 library_system::~library_system(){
     saveBooks();

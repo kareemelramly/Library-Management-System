@@ -14,6 +14,8 @@ MainWindow::MainWindow(library_system* system, QWidget *parent)
     admindashbord = nullptr;
     librarianPage=nullptr;
     userPage=nullptr;
+    librarySystem->Users();
+    librarySystem->Books();
 
 }
 
@@ -21,7 +23,7 @@ void MainWindow::openAdminDashbord()
 {
     qDebug() << "Open admin page called";
     if (!admindashbord)
-        admindashbord = new Admin_Dashbord(this);
+        admindashbord = new Admin_Dashbord(librarySystem, this);
     admindashbord->show();
 }
 
@@ -63,7 +65,7 @@ void MainWindow::on_loginButton_clicked()
         if (role == "admin") {
             QMessageBox::information(this, "Login", "Admin login successful!");
             if (!admindashbord) {
-                admindashbord = new Admin_Dashbord(this);
+                admindashbord = new Admin_Dashbord(librarySystem, this);
             }
             this -> hide();
             admindashbord->show();
@@ -78,7 +80,7 @@ void MainWindow::on_loginButton_clicked()
             QMessageBox::information(this, "Login", "Member login successful!");
             if (!userPage) {
                 qDebug()<<"start\n";
-                userPage = new User_Interface_Page(username, this);
+                userPage = new User_Interface_Page(username,librarySystem, this);
             }
             this -> hide();
             userPage->show();

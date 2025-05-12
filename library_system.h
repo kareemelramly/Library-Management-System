@@ -10,16 +10,21 @@ class library_system
 private:
     QMap<QString, library_member*> users ;
     QList<book*>   books;
+    QString bookPath;
+    QString userPath;
 
 
 public:
     library_system();
-    QList<book*> Books();
-    QMap<QString, library_member*>Users();
+     QList<book*> &Books();
+     QMap<QString, library_member *> &Users();
 
     ~library_system();
     void saveBooks();
     void saveUsers();
+    QString bookFilePath();
+    QString userFilePath();
+
 
 };
 

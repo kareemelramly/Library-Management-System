@@ -14,14 +14,7 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
-QDialog{
-    background-image: url(&quot;:/Images/ylswjsy7stw-2048x1201.jpg&quot;);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-}
-</string>
+   <string notr="true"/>
   </property>
   <widget class="QFrame" name="frame">
    <property name="geometry">
@@ -33,9 +26,14 @@ QDialog{
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QLabel{
-color:white;
-}</string>
+    <string notr="true">
+QFrame{
+    background-image: url(&quot;:/Images/ylswjsy7stw-2048x1201.jpg&quot;);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::Shape::StyledPanel</enum>
@@ -43,60 +41,6 @@ color:white;
    <property name="frameShadow">
     <enum>QFrame::Shadow::Raised</enum>
    </property>
-   <widget class="QGroupBox" name="groupBox">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>140</y>
-      <width>391</width>
-      <height>571</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QGroupBox{
-border:none;
-}</string>
-    </property>
-    <property name="title">
-     <string/>
-    </property>
-    <widget class="QPushButton" name="delete_user_button">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>510</y>
-       <width>93</width>
-       <height>29</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Delete User</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_5">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>30</y>
-       <width>131</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>List of Users</string>
-     </property>
-    </widget>
-    <widget class="QTableWidget" name="usersTable">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>331</width>
-       <height>381</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
@@ -113,7 +57,7 @@ border:none;
    <widget class="QFrame" name="frame_2">
     <property name="geometry">
      <rect>
-      <x>439</x>
+      <x>430</x>
       <y>270</y>
       <width>301</width>
       <height>361</height>
@@ -318,6 +262,75 @@ background:rgba(0,0,0, 200);
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>20</y>
+     <width>391</width>
+     <height>571</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QGroupBox{
+border:none;
+}</string>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QPushButton" name="delete_user_button">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>520</y>
+      <width>93</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Delete User</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>331</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background:rgba(0,0,0, 200);
+}
+</string>
+    </property>
+    <property name="text">
+     <string>List of Users</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="usersTable">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>130</y>
+      <width>331</width>
+      <height>381</height>
+     </rect>
     </property>
    </widget>
   </widget>

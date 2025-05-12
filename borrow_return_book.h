@@ -12,7 +12,7 @@ class borrow_return_book : public QDialog
     Q_OBJECT
 
 public:
-    explicit borrow_return_book(library_system *system, member* currentUser, QWidget *parent = nullptr);
+    explicit borrow_return_book(member* currentUser,library_system *system,  QWidget *parent = nullptr);
     ~borrow_return_book();
     void refreshBooksList();
     void refreshBooksBorrowedList();
