@@ -85,23 +85,10 @@ QLineEdit:focus {
    <property name="frameShadow">
     <enum>QFrame::Shadow::Raised</enum>
    </property>
-   <widget class="QPushButton" name="view_transactions_button">
-    <property name="geometry">
-     <rect>
-      <x>500</x>
-      <y>180</y>
-      <width>121</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Transactions</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="book_records_button">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>110</x>
       <y>180</y>
       <width>121</width>
       <height>41</height>
@@ -134,7 +121,7 @@ QLineEdit:focus {
    <widget class="QPushButton" name="generate_report_button">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>390</x>
       <y>180</y>
       <width>131</width>
       <height>41</height>
@@ -219,7 +206,6 @@ background:rgba(255,255,255, .5);
    </widget>
    <zorder>labelBehindText</zorder>
    <zorder>labelbackwelcome</zorder>
-   <zorder>view_transactions_button</zorder>
    <zorder>book_records_button</zorder>
    <zorder>welcome_2</zorder>
    <zorder>generate_report_button</zorder>

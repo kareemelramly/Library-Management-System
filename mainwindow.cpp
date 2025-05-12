@@ -23,9 +23,3 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::resizeEvent(QResizeEvent *event)
-{
-    QMainWindow::resizeEvent(event);
-    backgroundLabel->resize(this->size());  // Resize background with window
-}
-

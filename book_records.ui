@@ -54,7 +54,7 @@ QDialog{
      <string>List of Books</string>
     </property>
    </widget>
-   <widget class="QTableWidget" name="tableWidget">
+   <widget class="QTableWidget" name="booksList">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -68,36 +68,6 @@ QDialog{
       <pointsize>9</pointsize>
      </font>
     </property>
-    <column>
-     <property name="text">
-      <string>ID</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Author</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Title</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Category</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Availability</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Low-Stock</string>
-     </property>
-    </column>
    </widget>
   </widget>
   <widget class="QFrame" name="frame">
@@ -125,7 +95,7 @@ background:rgba(0,0,0,200);
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>90</y>
+      <y>50</y>
       <width>91</width>
       <height>20</height>
      </rect>
@@ -160,7 +130,7 @@ background:rgba(0,0,0,200);
      </rect>
     </property>
     <property name="text">
-     <string>Book ID</string>
+     <string>Book Name</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -176,23 +146,7 @@ background:rgba(0,0,0,200);
      </rect>
     </property>
     <property name="text">
-     <string>Number of low-stock books</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="low_stock">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>270</y>
-      <width>41</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>0</string>
+     <string> low-stock books is in red</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -251,26 +205,20 @@ background:rgba(0,0,0,200);
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>120</y>
+      <y>80</y>
       <width>221</width>
       <height>26</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLineEdit" name="searchName">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>40</y>
-      <width>91</width>
-      <height>20</height>
+      <y>120</y>
+      <width>221</width>
+      <height>28</height>
      </rect>
-    </property>
-    <property name="text">
-     <string>Name</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
   </widget>

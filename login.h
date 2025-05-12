@@ -1,6 +1,6 @@
 #ifndef LOGIN_H
 #define LOGIN_H
-
+#include "library_member.h"
 #include <QMainWindow>
 #include "admin_dashbord.h"
 #include "librarian_interface_page.h"
@@ -29,7 +29,8 @@ private:
     Admin_Dashbord *admindashbord;
     librarian_interface_page *librarianPage;
     User_Interface_Page *userPage;
-
+    QMap<QString, library_member*> users;
+    QList<book*>books;
 };
 #endif // LOGIN_H
 

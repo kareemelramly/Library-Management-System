@@ -8,19 +8,22 @@
 #include <QRegularExpression>
 #include <QMap>
 #include <QDebug>
-
-Admin_Dashbord::Admin_Dashbord(QWidget *parent)
+#include "member.h"
+#include "librarian.h"
+Admin_Dashbord::Admin_Dashbord(QWidget *parent,const QMap<QString, library_member*>& usersInput)
     : QDialog(parent)
-    , ui(new Ui::Admin_Dashbord)
+    , ui(new Ui::Admin_Dashbord),users(usersInput)
 {
     ui->setupUi(this);
     ui->passwordEdit->setEchoMode(QLineEdit::Password);
     setWindowTitle("Admin Page - User Management");
     refreshUserList();
+    this->setAttribute(Qt::WA_DeleteOnClose);
 }
 
 Admin_Dashbord::~Admin_Dashbord()
 {
+    Utils::saveUsersToFile("users.csv",users);
     delete ui;
 }
 
@@ -49,26 +52,17 @@ void Admin_Dashbord::on_signupButton_clicked()
         return;
     }
 
-    if (!Utils::isUsernameAvailable("users.csv", username)) {
+    if (users.contains(username)) {
         QMessageBox::warning(this, "Username Taken", "This username is already in use. Please choose another.");
         return;
     }
-
-    QFile file("users.csv");
-    if (file.open(QIODevice::Append | QIODevice::Text)) {
-        QTextStream out(&file);
-        out << username << "," << password << "," << role << "\n";
-        file.close();
-
-        QMessageBox::information(this, "User Registration", "User registered successfully.");
-
-        ui->usernameEdit->clear();
-        ui->passwordEdit->clear();
-
-        refreshUserList();
-    } else {
-        QMessageBox::critical(this, "File Error", "Could not open file for writing.");
+    if(role=="member"){
+        QMap<int,QString>books;
+        users[username] = new member(username,password,books,0);
+    }else if(role=="librarian"){
+        users[username]= new Librarian(username,password);
     }
+    refreshUserList();
 }
 
 void Admin_Dashbord::refreshUserList()
@@ -81,8 +75,6 @@ void Admin_Dashbord::refreshUserList()
         headers << "Username" << "Role";
         ui->usersTable->setHorizontalHeaderLabels(headers);
     }
-
-    QMap<QString, library_member*> users = Utils::loadUsersFromFile("users.csv");
 
     int row = 0;
     for (auto it = users.begin(); it != users.end(); ++it) {
@@ -108,14 +100,11 @@ void Admin_Dashbord::refreshUserList()
         row++;
     }
     ui->usersTable->resizeColumnsToContents();
-
-    users.clear();
 }
 
 void Admin_Dashbord::on_delete_user_button_clicked()
 {
     auto items = ui->usersTable->selectedItems();
-    QMap<QString, library_member*> users = Utils::loadUsersFromFile("users.csv");
     for(auto item: items){
         QString name = item->text();
         if(users.contains(name)){
@@ -123,8 +112,6 @@ void Admin_Dashbord::on_delete_user_button_clicked()
             users.erase(it);
         }
     }
-    Utils::saveUsersToFile("users.csv",users);
     refreshUserList();
-
 }
 

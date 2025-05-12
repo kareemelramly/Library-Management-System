@@ -4,7 +4,7 @@
 #include <QString>
 #include <QMap>
 #include "library_member.h"
-
+#include "book.h"
 class Utils {
 public:
     // Load users from file, returning a map of users with their username as key
@@ -20,7 +20,26 @@ public:
     static void createDefaultAdmin(const QString& filePath);
 
     // Check if a username is available (not already used)
-    static bool isUsernameAvailable(const QString& filePath, const QString& username);
+    static bool isUsernameAvailable(const QMap<QString, library_member*>& users, const QString& username);
+
+    //books part:
+
+    // Load books from file, returning a map of vector of books
+    static QList<book*> loadBooksFromFile(const QString& filePath);
+
+    // Create a default admin user if the file doesn't exist
+    static void createDefaultBook(const QString& filePath);
+
+    // Save all users to file (overwrites the file)
+    static void saveBookstoFile(const QString& filePath,const QList<book*>& books);
+
+    // Check if a username is available (not already used)
+    static bool isBookAvailable(const QList<book*>& books, const int ID);
+
+    //return total number of books
+
+    static int getTotalNumberOfBooks(const QList<book*>& books);
+
 };
 
 #endif // UTILS_H

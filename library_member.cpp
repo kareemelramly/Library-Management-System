@@ -10,4 +10,3 @@ QString library_member::getUsername() const {
 QString library_member::getPassword() const {
     return password;
 }
-
