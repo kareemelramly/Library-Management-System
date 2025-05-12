@@ -1,16 +1,48 @@
 #include "borrow_return_book.h"
 #include "ui_borrow_return_book.h"
+#include "member_interface_page.h"
 #include "utils.h"
 #include<QStringListModel>
-borrow_return_book::borrow_return_book(member* currentUser,const QMap<QString, library_member*>& usersIn,const QList<book*>& booksIn,QWidget *parent)
+borrow_return_book::borrow_return_book(member* currentUser,const QMap<QString, library_member*>& usersIn,const QList<book*>& booksIn,bool darkmode,QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::borrow_return_book),user(currentUser),users(usersIn),books(booksIn)
 {
+    this->darkMode = darkmode;
     ui->setupUi(this);
     user->calculateFines();
     ui->fines_money->setText(QString::number(user->TotalFine));
     refreshBooksList();
     refreshBooksBorrowedList();
+    if (!darkMode) {
+        // Light mode
+        qApp->setStyleSheet(""); // Reset to default
+    } else {
+        // Dark mode stylesheet
+        QString darkStyle = R"(
+            QWidget {
+                background-color: #121212;
+                color: #ffffff;
+            }
+            QPushButton {
+                background-color: #2c2c2c;
+                border: 1px solid #444;
+                padding: 5px;
+            }
+            QPushButton:hover {
+                background-color: #3d3d3d;
+            }
+            QLabel{
+                color:white;
+            }
+            QTableWidget{
+                color:black;
+            }
+            QListView{
+                color:black;
+            }
+        )";
+        qApp->setStyleSheet(darkStyle);
+    }
     this->setAttribute(Qt::WA_DeleteOnClose);
 }
 
@@ -73,8 +105,6 @@ void borrow_return_book::on_borrow_book_button_clicked()
         }
     }
 }
-
-
 void borrow_return_book::on_return_book_button_clicked()
 {
     QString Text= ui->borrowed_books_combo_box->currentText();
@@ -93,5 +123,21 @@ void borrow_return_book::on_return_book_button_clicked()
             return ;
         }
     }
+}
+
+
+void borrow_return_book::on_backButton_clicked()
+{
+    User_Interface_Page* newPage = new User_Interface_Page(user->getUsername(),users,books,darkMode);
+    newPage->show();
+    this->hide();
+}
+
+
+void borrow_return_book::on_pushButton_clicked()
+{
+    User_Interface_Page* newPage = new User_Interface_Page(user->getUsername(),users,books,darkMode);
+    newPage->show();
+    this->hide();
 }
 

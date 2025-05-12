@@ -193,6 +193,38 @@ QLineEdit:focus {
       <string>Login</string>
      </property>
     </widget>
+    <widget class="QRadioButton" name="radioButton">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>300</y>
+       <width>112</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QRadioButton { color: white; }</string>
+     </property>
+     <property name="text">
+      <string>DarkMode</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_2">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>300</y>
+       <width>112</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QRadioButton { color: white; }</string>
+     </property>
+     <property name="text">
+      <string>WhiteMode</string>
+     </property>
+    </widget>
     <zorder>labelBehindText</zorder>
     <zorder>label_login_page</zorder>
     <zorder>usernameEdit</zorder>
@@ -200,6 +232,8 @@ QLineEdit:focus {
     <zorder>Password_label</zorder>
     <zorder>passwordEdit</zorder>
     <zorder>loginButton</zorder>
+    <zorder>radioButton</zorder>
+    <zorder>radioButton_2</zorder>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -208,7 +242,7 @@ QLineEdit:focus {
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>

@@ -13,7 +13,7 @@ class book_records : public QDialog
     Q_OBJECT
 
 public:
-    explicit book_records(Librarian* userIn,const QMap<QString, library_member*>& usersIn,const QList<book*>& booksIn,QWidget *parent = nullptr);
+    explicit book_records(Librarian* userIn,const QMap<QString, library_member*>& usersIn,const QList<book*>& booksIn,bool darkMode,QWidget *parent = nullptr);
     ~book_records();
     void refreshBooksList();
     void refreshBooksListByTitle(QString name);
@@ -30,7 +30,10 @@ private slots:
 
     void on_delete_book_button_clicked();
 
+    void on_backButton_clicked();
+
 private:
+    bool darkMode;
     Ui::book_records *ui;
     Librarian* user;
     QMap<QString, library_member*> users;

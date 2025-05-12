@@ -135,6 +135,19 @@ background:rgba(255, 255,255, .8);
 }</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>83</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Back</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QLabel" name="fines_money">
     <property name="geometry">
