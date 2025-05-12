@@ -17,6 +17,7 @@ SOURCES += \
     librarian.cpp \
     librarian_interface_page.cpp \
     library_member.cpp \
+    library_system.cpp \
     login.cpp \
     main.cpp \
     member.cpp \
@@ -32,6 +33,7 @@ HEADERS += \
     librarian.h \
     librarian_interface_page.h \
     library_member.h \
+    library_system.h \
     login.h \
     member.h \
     member_interface_page.h \

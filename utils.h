@@ -20,7 +20,7 @@ public:
     static void createDefaultAdmin(const QString& filePath);
 
     // Check if a username is available (not already used)
-    static bool isUsernameAvailable(const QString& filePath, const QString& username);
+    static bool isUsernameAvailable(const QMap<QString, library_member*>& users, const QString& username);
 
     //books part:
 
@@ -34,11 +34,11 @@ public:
     static void saveBookstoFile(const QString& filePath,const QList<book*>& books);
 
     // Check if a username is available (not already used)
-    static bool isBookAvailable(const QString& filePath, const int ID);
+    static bool isBookAvailable(const QList<book*>& books, const int ID);
 
     //return total number of books
 
-    static int getTotalNumberOfBooks(const QString& filePath);
+    static int getTotalNumberOfBooks(const QList<book*>& books);
 
 };
 

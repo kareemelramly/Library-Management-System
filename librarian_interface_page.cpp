@@ -7,6 +7,7 @@ librarian_interface_page::librarian_interface_page(QString name, QWidget *parent
 {
     ui->setupUi(this);
     ui->welcome->setText("Welcome "+name);
+    this->setAttribute(Qt::WA_DeleteOnClose);
 }
 
 librarian_interface_page::~librarian_interface_page()

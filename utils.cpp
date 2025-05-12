@@ -144,59 +144,22 @@ void Utils::createDefaultBook(const QString& filePath) {
     }
 }
 
-bool Utils::isUsernameAvailable(const QString& filePath, const QString& username) {
-    QFile file(filePath);
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) return true;
-    QTextStream in(&file);
-    while (!in.atEnd()) {
-        QString line = in.readLine();
-        QStringList parts = line.split(",");
-        if (parts.size() == 3 && parts[0] == username) {
-            file.close();
-            return false;  
+bool Utils::isUsernameAvailable( const QMap<QString, library_member*>& users, const QString& username) {
+    for(auto item : users){
+        if(item->getUsername()==username){
+            return true;
         }
     }
-    file.close();
-    return true;  
+    return false;
 }
-bool Utils::isBookAvailable(const QString& filePath, const int ID) {
-    QFile file(filePath);
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) return true;
-    QTextStream in(&file);
-    while (!in.atEnd()) {
-        QString line = in.readLine();
-        QStringList parts = line.split(",");
-        if (parts.size() >= 6 && parts[0].toInt() == ID) {
-            file.close();
-            return false;
+bool Utils::isBookAvailable(const QList<book*>& books, const int IDNumber) {
+    for(auto item : books){
+        if(item->ID.toInt()==IDNumber){
+            return true;
         }
     }
-    file.close();
-    return true;
+    return false;
 }
- int Utils::getTotalNumberOfBooks(const QString& filePath){
-    int counter=0;
-    QFile file(filePath);
-
-    if (!file.exists()) {
-        // File doesn't exist, create the default admin
-        createDefaultBook(filePath);
-    }
-
-    // Try to open the file after possibly creating it
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        return counter;
-    }
-    //book(QString id, QString title, QString auth, QString categ, int number_of_copies, int available);
-    QTextStream in(&file);
-    while (!in.atEnd()) {
-        QString line = in.readLine();
-        QStringList parts = line.split(",");
-        if (parts.size() >= 6) {
-            counter++;
-
-        }
-    }
-    file.close();
-    return counter;
+ int Utils::getTotalNumberOfBooks(const QList<book*>& books){
+     return books.size();
 }

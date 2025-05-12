@@ -16,13 +16,15 @@ MainWindow::MainWindow(QWidget *parent)
     userPage=nullptr;
     Utils::createDefaultAdmin("users.csv");
     Utils::createDefaultBook("books.csv");
+    books = Utils::loadBooksFromFile("books.csv");
+    users = Utils::loadUsersFromFile("users.csv");
 }
 
 void MainWindow::openAdminDashbord()
 {
     qDebug() << "Open admin page called";
     if (!admindashbord)
-        admindashbord = new Admin_Dashbord(this);
+        admindashbord = new Admin_Dashbord(this,users);
     admindashbord->show();
 }
 
@@ -35,7 +37,6 @@ MainWindow::~MainWindow()
 
 bool MainWindow::validateCredentials(const QString& username, const QString& password)
 {
-    QMap<QString, library_member*> users = Utils::loadUsersFromFile("users.csv");
     if (users.contains(username)) {
         library_member* member = users[username];
         bool valid = (member->getPassword() == password);
@@ -54,16 +55,13 @@ void MainWindow::on_loginButton_clicked()
         QMessageBox::warning(this, "Login Error", "Username and password cannot be empty.");
         return;
     }
-    QMap<QString, library_member*> users = Utils::loadUsersFromFile("users.csv");
 
     if (users.contains(username) && users[username]->getPassword() == password) {
         QString role = users[username]->getRole();
-        users.clear();
-
         if (role == "admin") {
             QMessageBox::information(this, "Login", "Admin login successful!");
             if (!admindashbord) {
-                admindashbord = new Admin_Dashbord(this);
+                admindashbord = new Admin_Dashbord(this,users);
             }
             this -> hide();
             admindashbord->show();
@@ -78,7 +76,7 @@ void MainWindow::on_loginButton_clicked()
             QMessageBox::information(this, "Login", "Member login successful!");
             if (!userPage) {
                 qDebug()<<"start\n";
-                userPage = new User_Interface_Page(username, this);
+                userPage = new User_Interface_Page(username,users,books,this);
             }
             this -> hide();
             userPage->show();
@@ -86,7 +84,6 @@ void MainWindow::on_loginButton_clicked()
             QMessageBox::warning(this, "Login Warning", "Unknown user role: " + role);
         }
     } else {
-        users.clear();
         QMessageBox::critical(this, "Login Error", "Invalid username or password.");
     }
 }
