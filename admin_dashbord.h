@@ -14,7 +14,7 @@ class Admin_Dashbord : public QDialog
     Q_OBJECT
 
 public:
-    explicit Admin_Dashbord(QWidget *parent,const QMap<QString, library_member*>& usersInput);
+    explicit Admin_Dashbord(QWidget *parent,const QMap<QString, library_member*>& usersInput, bool darkMode);
     void refreshUserList();
     ~Admin_Dashbord();
 
@@ -24,6 +24,7 @@ private slots:
     void on_delete_user_button_clicked();
 
 private:
+    bool darkMode;
     Ui::Admin_Dashbord *ui;
     QComboBox* roleComboBox;
     QMap<QString, library_member*> users;

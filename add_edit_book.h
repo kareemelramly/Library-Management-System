@@ -13,7 +13,7 @@ class add_edit_book : public QDialog
     Q_OBJECT
 
 public:
-    explicit add_edit_book(QDialog* mainPage, Librarian* userIn,const QMap<QString, library_member*>& usersIn,const QList<book*>& booksIn,bool addStatue=true,QString ID="", QString title="", QString author="", QString Category="",QWidget *parent = nullptr);
+    explicit add_edit_book(QDialog* mainPage, Librarian* userIn,const QMap<QString, library_member*>& usersIn,const QList<book*>& booksIn,bool darkMode,bool addStatue=true,QString ID="", QString title="", QString author="", QString Category="",QWidget *parent = nullptr);
     ~add_edit_book();
 
 private slots:
@@ -22,6 +22,7 @@ private slots:
     void on_pushButton_2_clicked();
 
 private:
+    bool darkMode;
     bool addingCondition;
     Ui::add_edit_book *ui;
     QDialog* mainP;

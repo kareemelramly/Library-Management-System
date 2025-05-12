@@ -10,14 +10,42 @@
 #include <QDebug>
 #include "member.h"
 #include "librarian.h"
-Admin_Dashbord::Admin_Dashbord(QWidget *parent,const QMap<QString, library_member*>& usersInput)
+Admin_Dashbord::Admin_Dashbord(QWidget *parent,const QMap<QString, library_member*>& usersInput,bool darkmode)
     : QDialog(parent)
     , ui(new Ui::Admin_Dashbord),users(usersInput)
 {
+    this->darkMode = darkmode;
     ui->setupUi(this);
     ui->passwordEdit->setEchoMode(QLineEdit::Password);
     setWindowTitle("Admin Page - User Management");
     refreshUserList();
+    if (!darkMode) {
+        // Light mode
+        qApp->setStyleSheet(""); // Reset to default
+    } else {
+        // Dark mode stylesheet
+        QString darkStyle = R"(
+            QWidget {
+                color: #ffffff;
+            }
+            QPushButton {
+                background-color: #2c2c2c;
+                border: 1px solid #444;
+                padding: 5px;
+            }
+            QPushButton:hover {
+                background-color: #3d3d3d;
+            }
+            QLabel{
+                color:white;
+            }
+            QTableWidget{
+                color:white;
+                background-color: black;
+            }
+        )";
+        qApp->setStyleSheet(darkStyle);
+    }
     this->setAttribute(Qt::WA_DeleteOnClose);
 }
 

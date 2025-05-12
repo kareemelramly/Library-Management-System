@@ -3,16 +3,44 @@
 #include<QMessageBox>
 #include "book_records.h"
 #include "utils.h"
-add_edit_book::add_edit_book(QDialog* mainPage, Librarian* userIn,const QMap<QString, library_member*>& usersIn,const QList<book*>& booksIn,bool add,QString ID, QString title, QString author, QString Category,QWidget *parent)
+add_edit_book::add_edit_book(QDialog* mainPage, Librarian* userIn,const QMap<QString, library_member*>& usersIn,const QList<book*>& booksIn,bool darkmode,bool addStatue,QString ID, QString title, QString author, QString Category,QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::add_edit_book),users(usersIn),books(booksIn),user(userIn),addingCondition(add),mainP(mainPage)
+    , ui(new Ui::add_edit_book),users(usersIn),books(booksIn),user(userIn),addingCondition(addStatue),mainP(mainPage)
 {
     ui->setupUi(this);
+    this->darkMode = darkmode;
     ui->ID_label->setText(ID);
     ui->title_line_edit->setText(title);
     ui->author_line_edit->setText(author);
     ui->category_line_edit->setText(Category);
     this->setAttribute(Qt::WA_DeleteOnClose);
+    if (!darkMode) {
+        // Light mode
+        qApp->setStyleSheet(""); // Reset to default
+    } else {
+        // Dark mode stylesheet
+        QString darkStyle = R"(
+            QWidget {
+                background-color: #121212;
+                color: #ffffff;
+            }
+            QPushButton {
+                background-color: #2c2c2c;
+                border: 1px solid #444;
+                padding: 5px;
+            }
+            QPushButton:hover {
+                background-color: #3d3d3d;
+            }
+            QLabel{
+                color:white;
+            }
+            QTableWidget{
+                color:black;
+            }
+        )";
+        qApp->setStyleSheet(darkStyle);
+    }
 }
 
 add_edit_book::~add_edit_book()

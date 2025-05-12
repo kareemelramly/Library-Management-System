@@ -14,13 +14,14 @@ class User_Interface_Page : public QDialog
     Q_OBJECT
 
 public:
-    explicit User_Interface_Page(QString username,const QMap<QString, library_member*>& users,const QList<book*>& books, QWidget *parent = nullptr);
+    explicit User_Interface_Page(QString username,const QMap<QString, library_member*>& users,const QList<book*>& books,bool darkMode, QWidget *parent = nullptr);
     ~User_Interface_Page();
 
 private slots:
     void on_borrow_book_clicked();
 
 private:
+    bool darkMode;
     Ui::User_Interface_Page *ui;
     member* user;
     borrow_return_book* borrowBookPage;
