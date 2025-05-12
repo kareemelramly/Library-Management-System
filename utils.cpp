@@ -81,7 +81,7 @@ QList<book*> Utils::loadBooksFromFile(const QString& filePath) {
     file.close();
     return books;
 }
-void Utils::saveUsersToFile(const QString& filePath, const QMap<QString, library_member*>& users) {
+void Utils::saveUsersToFile(const QString& filePath, const QMap<QString, library_member*>users) {
     QFile file(filePath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         qDebug() << "Could not open file!" << filePath;
@@ -102,7 +102,7 @@ void Utils::saveUsersToFile(const QString& filePath, const QMap<QString, library
     }
     file.close();
 }
-void Utils::saveBookstoFile(const QString& filePath,const QList<book*>& books) {
+void Utils::saveBookstoFile(const QString& filePath,const QList<book*> books) {
     QFile file(filePath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         qDebug() << "Could not open file!" << filePath;

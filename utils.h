@@ -11,7 +11,7 @@ public:
     static QMap<QString, library_member*> loadUsersFromFile(const QString& filePath);
 
     // Save all users to file (overwrites the file)
-    static void saveUsersToFile(const QString& filePath, const QMap<QString, library_member*>& users);
+    static void saveUsersToFile(const QString& filePath, const QMap<QString, library_member*> users);
 
     // Save a new user to the file (used when registering a new user)
     static void saveUsersToFile(const QString& filePath, const QString& username, const QString& password, const QString& role);
@@ -31,7 +31,7 @@ public:
     static void createDefaultBook(const QString& filePath);
 
     // Save all users to file (overwrites the file)
-    static void saveBookstoFile(const QString& filePath,const QList<book*>& books);
+    static void saveBookstoFile(const QString& filePath,const QList<book*> books);
 
     // Check if a username is available (not already used)
     static bool isBookAvailable(const QString& filePath, const int ID);

@@ -1,7 +1,8 @@
 #include "admin_dashbord.h"
+#include "build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/ui_admin_dashbord.h"
 #include "ui_admin_dashbord.h"
-#include "library_member.h" 
-#include "utils.h"
+#include "library_member.h"
+
 #include <QMessageBox>
 #include <QFile>
 #include <QTextStream>
@@ -9,9 +10,10 @@
 #include <QMap>
 #include <QDebug>
 
-Admin_Dashbord::Admin_Dashbord(QWidget *parent)
+Admin_Dashbord::Admin_Dashbord(library_system* system, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::Admin_Dashbord)
+    , librarySystem(system)
 {
     ui->setupUi(this);
     ui->passwordEdit->setEchoMode(QLineEdit::Password);
@@ -22,6 +24,8 @@ Admin_Dashbord::Admin_Dashbord(QWidget *parent)
 Admin_Dashbord::~Admin_Dashbord()
 {
     delete ui;
+    librarySystem->saveUsers();
+    librarySystem->saveBooks();
 }
 
 void Admin_Dashbord::on_signupButton_clicked()
@@ -86,10 +90,9 @@ void Admin_Dashbord::refreshUserList()
         ui->usersTable->setHorizontalHeaderLabels(headers);
     }
 
-    QMap<QString, library_member*> users = Utils::loadUsersFromFile("users.csv");
 
     int row = 0;
-    for (auto it = users.begin(); it != users.end(); ++it) {
+    for (auto it = librarySystem->Users().begin(); it != librarySystem->Users().end(); ++it) {
         QString username = it.key();
         QString role = it.value()->getRole();
 
@@ -113,21 +116,19 @@ void Admin_Dashbord::refreshUserList()
     }
     ui->usersTable->resizeColumnsToContents();
 
-    users.clear();
 }
 
 void Admin_Dashbord::on_delete_user_button_clicked()
 {
     auto items = ui->usersTable->selectedItems();
-    QMap<QString, library_member*> users = Utils::loadUsersFromFile("users.csv");
     for(auto item: items){
         QString name = item->text();
-        if(users.contains(name)){
-            auto it = users.find(name);
-            users.erase(it);
+        if(librarySystem->Users().contains(name)){
+            auto it = librarySystem->Users().find(name);
+            librarySystem->Users().erase(it);
         }
     }
-    Utils::saveUsersToFile("users.csv",users);
+    librarySystem->saveUsers();
     refreshUserList();
 
 }

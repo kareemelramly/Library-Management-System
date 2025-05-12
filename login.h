@@ -5,6 +5,7 @@
 #include "admin_dashbord.h"
 #include "librarian_interface_page.h"
 #include "member_interface_page.h"
+#include "library_system.h"
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -16,7 +17,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(library_system * system, QWidget *parent = nullptr);
     ~MainWindow();
 private slots:
     /*void on_actionSignup_triggered(); */// Rename this to something like on_actionAdminPage_triggered if you update your UI
@@ -29,6 +30,8 @@ private:
     Admin_Dashbord *admindashbord;
     librarian_interface_page *librarianPage;
     User_Interface_Page *userPage;
+    library_system* librarySystem;
+
 
 };
 #endif // LOGIN_H

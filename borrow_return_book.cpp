@@ -1,10 +1,9 @@
 #include "borrow_return_book.h"
 #include "ui_borrow_return_book.h"
-#include "utils.h"
 #include<QStringListModel>
-borrow_return_book::borrow_return_book(member* currentUser,QWidget *parent)
+borrow_return_book::borrow_return_book(library_system* system, member* currentUser,QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::borrow_return_book),user(currentUser)
+    , ui(new Ui::borrow_return_book),user(currentUser), librarySystem(system)
 {
     ui->setupUi(this);
     user->calculateFines();
@@ -20,9 +19,9 @@ borrow_return_book::~borrow_return_book()
 
 void borrow_return_book::refreshBooksList()
 {
-    QList<book*>books = Utils::loadBooksFromFile("books.csv");
+
     QStringList list;
-    for(auto item: books){
+    for(auto item: librarySystem->Books()){
         if(!(user->isBookBorrowed(item->ID.toInt()))){
             list<<item->Title;
         }
@@ -35,9 +34,8 @@ void borrow_return_book::refreshBooksList()
 }
 void borrow_return_book::refreshBooksBorrowedList()
 {
-    QList<book*>books = Utils::loadBooksFromFile("books.csv");
     QStringList list;
-    for(auto item: books){
+    for(auto item: librarySystem->Books()){
         if(user->isBookBorrowed(item->ID.toInt())){
         list<<item->Title;
         }
@@ -51,11 +49,10 @@ void borrow_return_book::refreshBooksBorrowedList()
 void borrow_return_book::on_borrow_book_button_clicked()
 {
     QModelIndexList selectedIndexes = ui->book_list->selectionModel()->selectedIndexes();
-    QList<book*>borrowed_books = Utils::loadBooksFromFile("books.csv");
     if(!selectedIndexes.isEmpty()){
         QModelIndex selectedIndex = selectedIndexes.first();
         QVariant data = selectedIndex.data();
-        for(auto item = borrowed_books.begin();item!=borrowed_books.end();item++){
+        for(auto item = librarySystem->Books().begin();item!=librarySystem->Books().end();item++){
             if((*item)->Title==data){
                 if((*item)->availableCopies<=0)
                     return ;
@@ -65,10 +62,10 @@ void borrow_return_book::on_borrow_book_button_clicked()
                 ui->fines_money->setText(QString::number(user->TotalFine));
                 refreshBooksBorrowedList();
                 refreshBooksList();
-                Utils::saveBookstoFile("books.csv",borrowed_books);
-                auto userList = Utils::loadUsersFromFile("users.csv");
+                librarySystem->saveBooks();
+                auto userList = librarySystem->Users();
                 userList[user->getUsername()]=user;
-                Utils::saveUsersToFile("users.csv",userList);
+                librarySystem->saveBooks();
                 return ;
             }
         }
@@ -79,9 +76,9 @@ void borrow_return_book::on_borrow_book_button_clicked()
 void borrow_return_book::on_return_book_button_clicked()
 {
     QString Text= ui->borrowed_books_combo_box->currentText();
-    QList<book*>borrowed_books = Utils::loadBooksFromFile("books.csv");
+    librarySystem->Books();
 
-    for(auto item = borrowed_books.begin();item!=borrowed_books.end();item++){
+    for(auto item =  librarySystem->Books().begin();item!= librarySystem->Books().end();item++){
         if((*item)->Title==Text){
             user->Return((*item)->ID.toInt());
             user->calculateFines();
@@ -89,10 +86,10 @@ void borrow_return_book::on_return_book_button_clicked()
             (*item)->returning();
             refreshBooksBorrowedList();
             refreshBooksList();
-            Utils::saveBookstoFile("books.csv",borrowed_books);
-            auto userList = Utils::loadUsersFromFile("users.csv");
+            librarySystem->saveBooks();
+            auto userList = librarySystem->Users();
             userList[user->getUsername()]=user;
-            Utils::saveUsersToFile("users.csv",userList);
+            librarySystem->saveUsers();
             return ;
         }
     }

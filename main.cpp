@@ -1,11 +1,21 @@
-#include "login.h"
-
 #include <QApplication>
+#include "mainwindow.h"
+#include "library_system.h"
+#include "library_system.h"
+
+library_system* system = nullptr;
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    QApplication app(argc, argv);
+
+    system = new library_system();  // Global library context
+
     MainWindow w;
     w.show();
-    return a.exec();
+
+    int result = app.exec();
+
+    delete system;  // Clean up
+    return result;
 }
